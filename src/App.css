@@ -7,7 +7,10 @@ h1{
   text-align: center;
 }
 ol{
-  background-color: aqua;
+  
+  margin-left:70px ;
+  width: 500px;
+  background-color: dodgerblue;
 }
 input[type=text] {
   margin-left: 30%;
@@ -23,6 +26,7 @@ li{
   border-bottom: 2px dotted black;
   font-family: 'Times New Roman', Times, serif;
   font-size: 25px;
+  color: white;
 }
 .add {
   background-color: #4CAF50; /* Green */
