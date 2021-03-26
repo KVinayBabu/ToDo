@@ -1,25 +1,61 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    text: '',
+    todolist: [],
+    disabled: true,
+    }
+    
+    onAddText = (e) => {
+    this.setState({
+    text: e.target.value,
+    })
+    }
+    
+    onAddToList = () => {
+    if (this.state.text) {
+    this.setState(prevState => ({
+    todolist: prevState.todolist.concat(prevState.text),
+    text:''
+    }));
+    }
+    }
+    
+    onDelete = (index) => {
+    this.state.todolist.splice(index, 1);
+    this.setState(prevState => ({
+    todolist: prevState.todolist
+    }));
+    }
+    
+  render(){
+    return (
+      <div className="todo">
+        <h1>To Do List</h1>
+        <input type="text" value={this.state.text} onChange={this.onAddText} disabled={!this.state.disabled} />
+        <button class="add" placeholder="Enter text" onClick={this.onAddToList}>
+          Add
+        </button>
+        <ol>
+          {
+            this.state.todolist.filter(item => item.includes(this.state.text)).map((item, index) => {
+              return (
+                <li key={index} >
+                  <span>{item}​​​​​​​​</span>
+                  <button class="delete" onClick={() => this.onDelete(index)}>
+                    Delete
+                  </button>
+                </li>
+              )
+            })
+          }
+        </ol>
+
+      </div >
+    )
+  }
 }
 
 export default App;
