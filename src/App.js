@@ -8,13 +8,13 @@ class App extends React.Component {
     disabled: true,
     }
     
-    onAddText = (e) => {
+    AddText = (e) => {
     this.setState({
     text: e.target.value,
     })
     }
     
-    onAddToList = () => {
+    Add = () => {
     if (this.state.text) {
     this.setState(prevState => ({
     todolist: prevState.todolist.concat(prevState.text),
@@ -34,8 +34,8 @@ class App extends React.Component {
     return (
       <div className="todo">
         <h1>To Do List</h1>
-        <input type="text" value={this.state.text} onChange={this.onAddText} disabled={!this.state.disabled} />
-        <button class="add" placeholder="Enter text" onClick={this.onAddToList}>
+        <input type="text" value={this.state.text} onChange={this.AddText} disabled={!this.state.disabled} />
+        <button class="add" placeholder="Enter text" onClick={this.Add}>
           Add
         </button>
         <ol>
